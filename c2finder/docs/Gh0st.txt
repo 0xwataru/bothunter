@@ -1,0 +1,5 @@
+发送Bot系统信息后
+收到以Gh0st开头的回应报文
+
+ps:
+测试IP见Shodan，搜索product:"Gh0st Rat Trojan"

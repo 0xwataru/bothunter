@@ -1,0 +1,10 @@
+.idea/
+.idea
+.DS_Store
+
+
+pre_version/
+*.pyc
+*.yaml
+config.ini
+*.log

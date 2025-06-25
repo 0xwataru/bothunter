@@ -1,0 +1,5 @@
+发送上线包'\x00\x00\x00\x01'后
+收到满足正则'.*MIRAI.*TA.*\d{3}.*user:.'或'.*SATORI.*TA.*\d{3}.*user:.'的回应报文
+
+ps:
+测试IP见shodan,搜索MIRAI或SATORI

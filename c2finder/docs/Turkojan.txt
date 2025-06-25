@@ -1,0 +1,2 @@
+发送Check In报文：ams
+收到回应报文：MINFO
