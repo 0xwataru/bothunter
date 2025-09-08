@@ -1,11 +1,11 @@
-# BotHunter - 僵尸网络检测工具
+# BotHunter - Botnet Detection Tool
 
-BotHunter 是一个强大的僵尸网络检测和监控工具，专门用于发现和分析各种类型的恶意软件和僵尸网络活动。该工具支持多种检测模式，包括C2（命令与控制）服务器检测和P2P（点对点）僵尸网络检测。
+BotHunter is a powerful botnet detection and monitoring tool designed to discover and analyze various types of malware and botnet activities. The tool supports multiple detection modes, including C2 (Command & Control) server detection and P2P (Peer-to-Peer) botnet detection.
 
-## 🎯 主要功能
+## 🎯 Key Features
 
-### C2 僵尸网络检测
-- **支持的恶意软件类型**：
+### C2 Botnet Detection
+- **Supported Malware Types**:
   - njRAT
   - DarkComet
   - NanoCore
@@ -20,85 +20,85 @@ BotHunter 是一个强大的僵尸网络检测和监控工具，专门用于发�
   - Cafeini
   - DarkTrack
 
-### P2P 僵尸网络检测
-- **支持的P2P僵尸网络**：
+### P2P Botnet Detection
+- **Supported P2P Botnets**:
   - Sality
   - ZeroAccess
   - GameOver Zeus
 
-### 集成功能
-- **Shodan集成**：自动从Shodan获取恶意软件相关的IP和端口信息
-- **数据存储**：支持MongoDB存储检测结果
-- **消息队列**：支持Kafka进行实时数据流处理
-- **日志记录**：完整的日志记录和错误处理
+### Integration Features
+- **Shodan Integration**: Automatically retrieves malware-related IP and port information from Shodan
+- **Data Storage**: MongoDB support for storing detection results
+- **Message Queue**: Kafka support for real-time data stream processing
+- **Logging**: Comprehensive logging and error handling
 
-## 🏗️ 项目架构
+## 🏗️ Project Architecture
 
 ```
 BotHunter/
-├── main.py                 # 主程序入口
-├── lib/                    # 核心库文件
-│   ├── cli.py             # 命令行界面
-│   ├── core/              # 核心功能模块
-│   ├── utils/             # 工具函数
-│   ├── shodan_.py         # Shodan API集成
-│   ├── mongo_.py          # MongoDB操作
-│   ├── kafka_.py          # Kafka消息队列
-│   └── file_.py           # 文件操作
-├── c2finder/              # C2僵尸网络检测模块
+├── main.py                 # Main program entry point
+├── lib/                    # Core library files
+│   ├── cli.py             # Command line interface
+│   ├── core/              # Core functionality modules
+│   ├── utils/             # Utility functions
+│   ├── shodan_.py         # Shodan API integration
+│   ├── mongo_.py          # MongoDB operations
+│   ├── kafka_.py          # Kafka message queue
+│   └── file_.py           # File operations
+├── c2finder/              # C2 botnet detection modules
 │   ├── njrat.py
 │   ├── darkcomet.py
 │   ├── nanocore.py
-│   └── ... (其他恶意软件检测器)
-├── p2pfinder/             # P2P僵尸网络检测模块
+│   └── ... (other malware detectors)
+├── p2pfinder/             # P2P botnet detection modules
 │   ├── sality.py
 │   ├── zeroaccess.py
 │   └── gameoverzeus.py
-├── sample/                # 样本文件
-│   ├── pcap/             # 网络数据包样本
-│   └── file/             # 文件样本
-└── config.ini_example.ini # 配置文件示例
+├── sample/                # Sample files
+│   ├── pcap/             # Network packet samples
+│   └── file/             # File samples
+└── config.ini_example.ini # Configuration file example
 ```
 
-## 📋 系统要求
+## 📋 System Requirements
 
 - Python 2.7
-- 操作系统：Linux/macOS/Windows
+- Operating System: Linux/macOS/Windows
 
-## 🔧 安装步骤
+## 🔧 Installation
 
-1. **克隆项目**
+1. **Clone the repository**
    ```bash
    git clone https://github.com/your-repo/BotHunter.git
    cd BotHunter
    ```
 
-2. **安装依赖**
+2. **Install dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **安装额外依赖**
+3. **Install additional dependencies**
    ```bash
-   # 对于P2P检测功能，需要安装scapy
+   # For P2P detection functionality
    pip install scapy
    
-   # 对于Kafka功能
+   # For Kafka functionality
    pip install kafka-python
    
-   # 对于Shodan API
+   # For Shodan API
    pip install shodan
    ```
 
-4. **配置设置**
+4. **Configure settings**
    ```bash
    cp config.ini_example.ini config.ini
-   # 编辑config.ini文件，填入相应的API密钥和服务器信息
+   # Edit config.ini file with your API keys and server information
    ```
 
-## ⚙️ 配置说明
+## ⚙️ Configuration
 
-### config.ini 配置项
+### config.ini Configuration Items
 
 ```ini
 [shodan]
@@ -120,46 +120,46 @@ file = ./p2pfinder/p2p_ent/filepath
 default_ent = {"zeroaccess": [], "gameoverzeus": [], "sality": []}
 ```
 
-## 🚀 使用方法
+## 🚀 Usage
 
-### 基本使用
+### Basic Usage
 
 ```bash
 python main.py
 ```
 
-### 功能说明
+### Functionality Overview
 
-1. **C2检测模式**
-   - 通过Shodan API搜索恶意软件相关的IP和端口
-   - 对每个IP:端口组合进行恶意软件特征检测
-   - 支持多种RAT（远程访问木马）的识别
+1. **C2 Detection Mode**
+   - Searches for malware-related IPs and ports through Shodan API
+   - Performs malware signature detection on each IP:port combination
+   - Supports identification of various RAT (Remote Access Trojan) types
 
-2. **P2P检测模式**
-   - 对P2P僵尸网络节点进行主动探测
-   - 支持Sality、ZeroAccess、GameOver Zeus等P2P僵尸网络
-   - 通过UDP协议进行节点发现
+2. **P2P Detection Mode**
+   - Actively probes P2P botnet nodes
+   - Supports Sality, ZeroAccess, GameOver Zeus and other P2P botnets
+   - Discovers nodes through UDP protocol
 
-3. **数据输出**
-   - 控制台输出检测结果
-   - MongoDB存储详细检测信息
-   - Kafka实时推送威胁情报
+3. **Data Output**
+   - Console output of detection results
+   - MongoDB storage of detailed detection information
+   - Kafka real-time threat intelligence push
 
-## 🔍 检测原理
+## 🔍 Detection Principles
 
-### C2检测
-- 通过Shodan搜索`category:malware`获取潜在恶意IP
-- 对每个IP进行特定恶意软件协议的握手检测
-- 分析响应数据包特征判断恶意软件类型
+### C2 Detection
+- Uses Shodan to search for `category:malware` to obtain potential malicious IPs
+- Performs specific malware protocol handshake detection on each IP
+- Analyzes response packet characteristics to determine malware type
 
-### P2P检测
-- 使用预定义的P2P僵尸网络协议
-- 发送特定格式的UDP数据包
-- 解析响应数据获取活跃节点信息
+### P2P Detection
+- Uses predefined P2P botnet protocols
+- Sends UDP packets in specific formats
+- Parses response data to obtain active node information
 
-## 📊 输出格式
+## 📊 Output Format
 
-### 检测结果示例
+### Detection Result Example
 ```json
 {
   "ip": "192.168.1.100",
@@ -170,7 +170,7 @@ python main.py
 }
 ```
 
-### MongoDB存储格式
+### MongoDB Storage Format
 ```json
 {
   "task_id": "shodan_get",
@@ -187,35 +187,21 @@ python main.py
 }
 ```
 
-## 🛡️ 安全注意事项
+## 🛡️ Security Considerations
 
-- 本工具仅用于安全研究和合法渗透测试
-- 请确保在授权环境中使用
-- 遵守当地法律法规
-- 不要对未授权的系统进行扫描
+- This tool is intended for security research and authorized penetration testing only
+- Ensure use in authorized environments
+- Comply with local laws and regulations
+- Do not scan unauthorized systems
 
-## 🤝 贡献指南
+## 🤝 Contributing
 
-欢迎提交Issue和Pull Request来改进这个项目。
+We welcome Issue submissions and Pull Requests to improve this project.
 
-## 📄 许可证
+## 📝 License
 
-本项目采用MIT许可证，详见LICENSE文件。
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 📞 联系方式
+## ⚠️ Disclaimer
 
-如有问题或建议，请通过以下方式联系：
-- 提交GitHub Issue
-- 发送邮件至项目维护者
-
-## 🔄 更新日志
-
-### v1.0.0
-- 初始版本发布
-- 支持C2和P2P僵尸网络检测
-- 集成Shodan、MongoDB、Kafka功能
-- 支持多种恶意软件类型识别
-
----
-
-**免责声明**：本工具仅用于教育和研究目的。使用者需要确保遵守相关法律法规，并承担使用本工具的所有责任。 
+This tool is provided for educational and research purposes only. Users are responsible for ensuring they have proper authorization before using this tool on any network or system. The authors are not responsible for any misuse of this software. 
