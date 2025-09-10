@@ -1,10 +1,30 @@
+# IDE files
 .idea/
 .idea
+.vscode/
+
+# System files
 .DS_Store
+Thumbs.db
 
-
-pre_version/
+# Python
 *.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Project specific
+pre_version/
 *.yaml
 config.ini
 *.log
+
+# Virtual environments
+venv/
+env/
+.env
